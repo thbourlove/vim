@@ -1,0 +1,198 @@
+## Snippets from SnipMate, taken from
+## https://github.com/scrooloose/snipmate-snippets.git
+global !p
+
+import re
+import os
+
+def get_args(arglist):
+    return ', '.join(
+        [re.sub(r'{(.*)}', r'$\1', arg)
+            for arg in arglist.split('/') if arg and re.search(r'{.*}', arg)])
+
+def get_namespace():
+    return re.sub(r'/', r'\\', re.sub(r'^.*src/', r'', os.getcwd()))
+
+def get_under_score(string, with_slash=True):
+    under_score = re.sub(r'[A-Z]', lambda m: '_' + m.group(0).lower(), string)
+    if with_slash:
+        return under_score
+    else:
+        return under_score[1:]
+
+endglobal
+
+snippet if "if"
+if (${1:/* condition */}) {
+	${2:// code...}
+}
+endsnippet
+
+snippet e "else"
+else {
+	${1:// code...}
+}
+endsnippet
+
+snippet ife "if else"
+if (${1:/* condition */}) {
+	${2:// code...}
+} else {
+	${3:// code...}
+}
+endsnippet
+
+snippet s "if else"
+switch (${1}) {
+	case ${2}:
+		${3}
+		break;
+	${0}
+}
+endsnippet
+
+snippet case "if else"
+case ${1}:
+	${2}
+	break;
+${0}
+endsnippet
+
+snippet w "while"
+while (${1:/* condition */}) {
+	${2:// code... }
+};
+endsnippet
+
+snippet do "do .. while"
+do {
+	${2:// code... }
+} while (${1:/* condition */});
+endsnippet
+
+snippet f "for"
+for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
+	${4:// code...}
+}
+endsnippet
+
+snippet fe "Foreach loop"
+foreach ($${1:variable} as $${2:value}) {
+	${3:// code..}
+}
+endsnippet
+
+snippet fek "foreach key value"
+foreach ($${1:variable} as $${2:key} => $${3:value}){
+	${4:// code...}
+}
+endsnippet
+
+snippet inc "inc"
+include '${1:file}';${2}
+endsnippet
+
+snippet req "req"
+require '${1:file}';${2}
+endsnippet
+
+snippet tc "try catch"
+try {
+	${1:// code...}
+} catch (${2:/* code...*/}) {
+	${3:// code...}
+}
+endsnippet
+
+snippet pub "Public function" !b
+public function ${1:name}(${2:$param})
+{
+	${VISUAL}${3:return null;}
+}
+endsnippet
+
+snippet pro "Protected function" !b
+protected function ${1:name}(${2:$param})
+{
+	${VISUAL}${3:return null;}
+}
+$0
+endsnippet
+
+snippet pri "Private function" !b
+private function ${1:name}(${2:$param})
+{
+	${VISUAL}${3:return null;}
+}
+endsnippet
+
+snippet pubs "Public static function" !b
+public static function ${1:name}(${2:$param})
+{
+	${VISUAL}${3:return null;}
+}
+endsnippet
+
+snippet pros "Protected static function" !b
+protected static function ${1:name}(${2:$param})
+{
+	${VISUAL}${3:return null;}
+}
+$0
+endsnippet
+
+snippet pris "Private static function" !b
+private static function ${1:name}(${2:$param})
+{
+	${VISUAL}${3:return null;}
+}
+endsnippet
+
+snippet v "var" b
+var_export(${1});${2}
+endsnippet
+
+snippet vd "var and die"
+var_export(${1});
+die();
+endsnippet
+
+snippet r "return"
+return ${0};
+endsnippet
+
+snippet t "$this"
+$this->
+endsnippet
+
+snippet E "\Exception"
+\Exception
+endsnippet
+
+snippet D "\Datetime"
+\Datetime
+endsnippet
+
+snippet c "Class declaration template" !b
+<?php
+
+class `!p snip.rv=snip.fn.split('.')[0]`$0
+{
+}
+endsnippet
+
+#path
+snippet ns "Class declaration template" !b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+class `!p snip.rv=snip.fn.split('.')[0]`$0
+{
+}
+endsnippet
+
+#Kint
+snippet d "dump"
+\Kint::dump($0);
+die();
+endsnippet
