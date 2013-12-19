@@ -2,75 +2,43 @@
 " Author: Hongbo Tang
 " Description: vim config
 " Last Modified: August 13, 2013
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key Mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"The default leader is '\', but many people prefer ',' as it's in a standard
-"location
+
+""""""""""""""" 快捷键绑定 """"""""""""""""
+
 let mapleader = ','
 
-" Fast editing of the .vimrc
-map <leader>v :e ~/.vimrc<cr>
-
-" Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
-nnoremap ; :
-
-" Easier moving in tabs and windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
-map <C-H> <C-W>h
-
-" Adjust viewports to the same size
-map <Leader>= <C-w>=
-
-" Remap VIM 0
-map 0 ^
-
-" lazy press <ESC>
-inoremap jk <Esc>
-
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Paste mode toggle
-map <leader>pp :setlocal paste!<cr>
-
-" In visual mode when you press * or # to search for the current selection
-vnoremap <silent> * :call VisualSearch('f')<CR>
-vnoremap <silent> # :call VisualSearch('b')<CR>
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSearch('gv')<CR>
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Close the current buffer
-"map <leader>d :Bclose<cr>
-
-" Close all the buffers
-map <leader>D :1,300 bd<cr>:q<cr>
-
-" Use the arrows to something usefull
+map <silent> <leader>v :e ~/.vimrc<cr>
+map <silent> <leader>s :source ~/.vimrc<cr>
+map <silent> <leader>pp :setlocal paste!<cr>
+map <leader>g :vimgrep // **/*<left><left><left><left><left><left>
 map <right> :bn!<cr>
 map <left> :bp!<cr>
 
-map <C-right> :tabnext<cr>
-map <C-left> :tabprevious<cr>
+vmap <silent> * :call VisualSearch('f')<CR>
+vmap <silent> # :call VisualSearch('b')<CR>
+vmap <silent> gv :call VisualSearch('gv')<CR>
 
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
+nmap <silent> <leader>/ :nohlsearch<CR>
 
-" Wrapped lines goes down/up to next row, rather than next line in file.
+cmap cd. lcd %:p:h
+cmap w!! w !sudo tee % >/dev/null
+
+noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-L> <C-W>l
+noremap <C-H> <C-W>h
+noremap <S-H> gT
+noremap <S-L> gt
+noremap ; :
+
+nnoremap 0 ^
 nnoremap j gj
 nnoremap k gk
-
-" The following two lines conflict with moving to top and bottom of the
-" screen
-" If you prefer that functionality, comment them out.
-map <S-H> gT
-map <S-L> gt
-
-" Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
+
+inoremap jk <Esc>
 
 " Code folding options
 nmap <leader>f0 :set foldlevel=0<CR>
@@ -84,80 +52,39 @@ nmap <leader>f7 :set foldlevel=7<CR>
 nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
 
-"clearing highlighted search
-nmap <silent> <leader>/ :nohlsearch<CR>
-
-" Shortcuts
-" Change Working Directory to that of the current file
-cmap cwd lcd %:p:h
-cmap cd. lcd %:p:h
-
-" Fix home and end keybindings for screen, particularly on mac
-" - for some reason this fixes the arrow keys too. huh.
-" map  [F $
-" imap [F $
-" map  [H g0
-" imap [H g0
-
-" For when you forget to sudo.. Really Write the file.
-cmap w!! w !sudo tee % >/dev/null
-
-" Bash like keys for the command line
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-K> <C-U>
-
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
 " Save and return to normal mode on FocusLost
 au FocusLost * :silent! wall                 " Save on FocusLost
 au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Bundle                                "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""" 插件 """"""""""""""
 
-""""""""""""
-"  vundle  "
-""""""""""""
-" 插件路径
+" vundle
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
-" 用Vundle来管理Vundle
 Bundle "gmarik/vundle"
 
-""""""""""""""""
-"  easymotion  "
-""""""""""""""""
-"Bundle 'Lokaltog/vim-easymotion'
-"" 选择键
-"let g:EasyMotion_keys = 'asdfghjkl;'
-"" 选择键分组模式
-"let g:EasyMotion_grouping = 1
-"" 阴影模式
-"let g:EasyMotion_do_shade = 1
-"" 阴影颜色以及高亮选择键的颜色
-"autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
-"autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
-"" 前置快捷键
-"let g:EasyMotion_leader_key = '<Leader>'
-"" 自定义快捷键
-"let g:EasyMotion_mapping_f = 'ff'
-"let g:EasyMotion_mapping_F = 'FF'
+Bundle 'Lokaltog/vim-easymotion'
+" 选择键
+let g:EasyMotion_keys = 'asdfghjkl;'
+" 选择键分组模式
+let g:EasyMotion_grouping = 1
+" 阴影模式
+let g:EasyMotion_do_shade = 1
+" 阴影颜色以及高亮选择键的颜色
+autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
+autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
+" 前置快捷键
+let g:EasyMotion_leader_key = '<Leader><Leader>'
+" 自定义快捷键
+let g:EasyMotion_mapping_f = 'ff'
+let g:EasyMotion_mapping_F = 'FF'
 
-"""""""""""""""
-"  Powerline  "
-"""""""""""""""
 Bundle 'Lokaltog/vim-powerline'
 " 设置Powerline的符号
 let g:Powerline_symbols = 'compatible'
 " 设置Powerline的颜色
 let g:Powerline_colorscheme = 'solarized16'
 
-"""""""""""""""
-"  ultisnips  "
-"""""""""""""""
 Bundle 'SirVer/ultisnips'
 " snippet的快捷键
 let g:UltiSnipsExpandTrigger       = "<tab>"
@@ -168,9 +95,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " snippet的相对路径
 let g:UltiSnipsSnippetDirectories  = ["snippets", "bundle/ultiSnips/UltiSnips"]
 
-""""""""""""""""""
-"  PHP-CS-Fixer  "
-""""""""""""""""""
 Bundle 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_level = "all"
 let g:php_cs_fixer_config = "default"
@@ -179,19 +103,17 @@ let g:php_cs_fixer_fixers_list = "controls_spaces,elseif,eof_ending,extra_empty_
 let g:php_cs_fixer_enable_default_mapping = 1
 let g:php_cs_fixer_dry_run = 0
 let g:php_cs_fixer_verbose = 0
-nnoremap <silent><leader>ff :call PhpCsFixerFixFile()<CR> :e <CR>
+nnoremap <silent> <leader>f :call PhpCsFixerFixFile()<CR> :e <CR>
 
-"""""""""""""""""""
-"  vim-autoclose  "
-"""""""""""""""""""
-" 括号补全 `<Leader>a`
 Bundle 'Townk/vim-autoclose'
-let g:AutoClosePairs = "() {} \" ' []"
+" autoclose 的快捷键
+let b:AutoCloseSelectionWrapPrefix = '<leader>a'
+" autoclose 的对象
+let g:AutoClosePairs = "() {} \" ' [] `"
 
 " 代码补全神器，可惜对php支持太烂了。
 "Bundle 'Valloric/YouCompleteMe'
 
-" git修改状态
 Bundle 'airblade/vim-gitgutter'
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_escape_grep = 1
@@ -201,7 +123,6 @@ let g:gitgutter_sign_modified = '~~'
 let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_modified_removed = '~-'
 
-" solarized主题
 Bundle 'altercation/vim-colors-solarized'
 color solarized
 let g:solarized_termcolors=256
@@ -209,33 +130,6 @@ let g:solarized_termtrans=1
 
 " 自动排列/对齐工具
 Bundle 'godlygeek/tabular'
-if exists(":Tabularize")
-    nmap <leader>a= :Tabularize /=<CR>
-    vmap <leader>a= :Tabularize /=<CR>
-    nmap <leader>a: :Tabularize /:<CR>
-    vmap <leader>a: :Tabularize /:<CR>
-    nmap <leader>a:: :Tabularize /:\zs<CR>
-    vmap <leader>a:: :Tabularize /:\zs<CR>
-    nmap <leader>a, :Tabularize /,<CR>
-    vmap <leader>a, :Tabularize /,<CR>
-    nmap <leader>a<Bar> :Tabularize /<Bar><CR>
-    vmap <leader>a<Bar> :Tabularize /<Bar><CR>
-
-    " The following function automatically aligns when typing a
-    " supported character
-    inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
-    function! s:align()
-        let p = '^\s*|\s.*\s|\s*$'
-        if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-            let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-            let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-            Tabularize/|/l1
-            normal! 0
-            call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-        endif
-    endfunction
-endif
 
 " Python 代码风格
 Bundle 'hynek/vim-python-pep8-indent'
@@ -243,6 +137,8 @@ Bundle 'hynek/vim-python-pep8-indent'
 " 查找文件工具
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
+" 只用文件名来搜索
+let g:ctrlp_by_filename = 0
 nnoremap <C-o> :CtrlPBuffer<CR>
 nnoremap <C-m> :CtrlPMRU<CR>
 nnoremap <C-e> :CtrlPClearCache<CR>
@@ -265,7 +161,6 @@ Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
-
 "let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.DS_Store']
@@ -519,7 +414,7 @@ function! VisualSearch(direction) range
     if a:direction == 'b'
         execute "normal ?" . l:pattern . "^M"
     elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+        execute "vimgrep /" . l:pattern . "/" . " **/*"
     elseif a:direction == 'f'
         execute "normal /" . l:pattern . "^M"
     endif
