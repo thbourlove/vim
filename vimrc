@@ -58,43 +58,35 @@ au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLo
 
 """"""""""" 插件 """"""""""""""
 
-" vundle
+" 插件管理工具
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle "gmarik/vundle"
 
+" 光标快速移动
 Bundle 'Lokaltog/vim-easymotion'
-" 选择键
 let g:EasyMotion_keys = 'asdfghjkl;'
-" 选择键分组模式
 let g:EasyMotion_grouping = 1
-" 阴影模式
 let g:EasyMotion_do_shade = 1
-" 阴影颜色以及高亮选择键的颜色
-autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
-autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
-" 前置快捷键
 let g:EasyMotion_leader_key = '<Leader><Leader>'
-" 自定义快捷键
 let g:EasyMotion_mapping_f = 'ff'
 let g:EasyMotion_mapping_F = 'FF'
+autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
+autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
 
+" 增强状态栏
 Bundle 'Lokaltog/vim-powerline'
-" 设置Powerline的符号
 let g:Powerline_symbols = 'compatible'
-" 设置Powerline的颜色
 let g:Powerline_colorscheme = 'solarized16'
 
+" 代码片段管理
 Bundle 'SirVer/ultisnips'
-" snippet的快捷键
 let g:UltiSnipsExpandTrigger       = "<tab>"
-" snippet中跳转的快捷键
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-" snippet中跳回的快捷键
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-" snippet的相对路径
 let g:UltiSnipsSnippetDirectories  = ["snippets", "bundle/ultiSnips/UltiSnips"]
 
+" php代码风格修正工具
 Bundle 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_level = "all"
 let g:php_cs_fixer_config = "default"
@@ -105,15 +97,15 @@ let g:php_cs_fixer_dry_run = 0
 let g:php_cs_fixer_verbose = 0
 nnoremap <silent> <leader>f :call PhpCsFixerFixFile()<CR> :e <CR>
 
+" 括号补全
 Bundle 'Townk/vim-autoclose'
-" autoclose 的快捷键
 let b:AutoCloseSelectionWrapPrefix = '<leader>a'
-" autoclose 的对象
 let g:AutoClosePairs = "() {} \" ' [] `"
 
-" 代码补全神器，可惜对php支持太烂了。
+" 代码补全
 "Bundle 'Valloric/YouCompleteMe'
 
+" git状态侧边栏
 Bundle 'airblade/vim-gitgutter'
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_escape_grep = 1
@@ -123,21 +115,21 @@ let g:gitgutter_sign_modified = '~~'
 let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_modified_removed = '~-'
 
+" solarized配色
 Bundle 'altercation/vim-colors-solarized'
 color solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 
-" 自动排列/对齐工具
+" 自动对齐工具
 Bundle 'godlygeek/tabular'
 
-" Python 代码风格
+" Python代码风格
 Bundle 'hynek/vim-python-pep8-indent'
 
 " 查找文件工具
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
-" 只用文件名来搜索
 let g:ctrlp_by_filename = 0
 nnoremap <C-o> :CtrlPBuffer<CR>
 nnoremap <C-m> :CtrlPMRU<CR>
@@ -146,25 +138,23 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$\|build$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.DS_Store$\|\.pyc$' }
 
-" 根据tags生成的tag树
+" tag列表
 Bundle 'majutsushi/tagbar'
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " html自动补全
 Bundle 'mattn/zencoding-vim'
 
-" 注释工具`<leader>cc` `<leader>cu`
+" 注释工具
 Bundle 'scrooloose/nerdcommenter'
 
 " 文件列表
 Bundle 'scrooloose/nerdtree'
-map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-map <leader>e :NERDTreeFind<CR>
-nmap <leader>nt :NERDTreeFind<CR>
 "let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.DS_Store']
 let NERDTreeShowHidden=1
+map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
 " 代码风格检查
 Bundle 'scrooloose/syntastic'
@@ -172,45 +162,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpcs']
 
-" vim 脚本库 (写插件用？)
-" Bundle 'tomtom/tlib_vim'
-
 " git工具
 Bundle 'tpope/vim-fugitive'
-
-" 彩虹括号
-Bundle 'kien/rainbow_parentheses.vim'
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" 缩进高亮
-Bundle 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-let g:indent_guides_guide_size = 4
 
 " J, K
 Bundle 'terryma/vim-expand-region'
@@ -219,12 +172,18 @@ map K <Plug>(expand_region_shrink)
 
 " 多光标
 Bundle 'terryma/vim-multiple-cursors'
-let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<ESC>'
+
+Bundle 'shawncplus/phpcomplete.vim'
 
 Bundle 'arnaud-lb/vim-php-namespace'
 inoremap <leader>u <C-O>:call PhpInsertUse()<CR>
-noremap <leader>u :call PhpInsertUse()<CR>
 inoremap <leader>e <C-O>:call PhpExpandClass()<CR>
+noremap <leader>u :call PhpInsertUse()<CR>
 noremap <leader>e :call PhpExpandClass()<CR>
 
 " 各种代码高亮/缩进工具
@@ -240,16 +199,10 @@ Bundle 'othree/html5.vim'
 
 Bundle 'sprsquish/thrift.vim'
 
-"Bundle 'skammer/vim-css-color'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Environment
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Basics
+"""""""""""""""""""""" 环境变量 """"""""""""""""""""""""
 set nocompatible               " must be first line
 set background=dark            " Assume a dark background
 
-" General
 set fencs=utf-8,gb2312,gbk     " Sets the default encoding
 set background=dark            " Assume a dark background
 filetype plugin indent on      " Automatically detect file types.
@@ -270,17 +223,14 @@ set undoreload=10000           " maximum number lines to save for undo on a buff
 set undodir=~/.vim/undo
 set tags=./tags;/,~/.vimtags   " set tags path
 
-" When vimrc is edited, reload it
+set completeopt-=preview
+
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
-" Since I use linux, I want this
 let g:clipbrdDefaultReg='+'
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim UI
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""" 用户界面 """"""""""""""""""""""""
 if has('gui_running')
     set t_Co=256
     set guifont=Monaco:h14     " set gui font
