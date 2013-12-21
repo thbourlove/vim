@@ -223,7 +223,7 @@ set undoreload=10000           " maximum number lines to save for undo on a buff
 set undodir=~/.vim/undo
 set tags=./tags;/,~/.vimtags   " set tags path
 
-set completeopt-=preview
+set completeopt-=preview       " omnicomplete without preview
 
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
@@ -275,9 +275,7 @@ set autoread                   " Auto reload file on change
 set list
 set listchars=tab:>\ ,trail:\ ,extends:#,nbsp:\  " Highlight problematic whitespace
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Formatting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" 格式 """""""""""""""""""""
 set wrap          " wrap long lines
 set lbr           " set linebreak
 set tw=0          " sets the text width
@@ -292,9 +290,7 @@ set softtabstop=4 " let backspace delete indent
 autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins {
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""" 插件配置 """""""""""""""""""
 " Misc
     let g:NERDShutUp=1
     let b:match_ignorecase = 1
@@ -319,9 +315,7 @@ autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:va
 " JSON
     nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Languages
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""" 语言高亮 缩进配置 """"""""""""""""""""
 " Indent Fixes
     autocmd FileType css,javascript,puppet,yaml,html set shiftwidth=4
     autocmd FileType css,javascript,puppet,yaml,html set tabstop=4
@@ -344,9 +338,7 @@ autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:va
 " Twig
     autocmd BufRead,BufNewFile *.twig set filetype=jinja
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Funtion define
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""" 函数 """""""""""""""""""""
 " Search selection
 function! VisualSearch(direction) range
     let l:saved_reg = @"
@@ -522,34 +514,4 @@ if has("cscope")
     nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
-
-
-    """"""""""""" key map timeouts
-    "
-    " By default Vim will only wait 1 second for each keystroke in a mapping.
-    " You may find that too short with the above typemaps.  If so, you should
-    " either turn off mapping timeouts via 'notimeout'.
-    "
-    "set notimeout
-    "
-    " Or, you can keep timeouts, by uncommenting the timeoutlen line below,
-    " with your own personal favorite value (in milliseconds):
-    "
-    "set timeoutlen=4000
-    "
-    " Either way, since mapping timeout settings by default also set the
-    " timeouts for multicharacter 'keys codes' (like <F1>), you should also
-    " set ttimeout and ttimeoutlen: otherwise, you will experience strange
-    " delays as vim waits for a keystroke after you hit ESC (it will be
-    " waiting to see if the ESC is actually part of a key code like <F1>).
-    "
-    "set ttimeout
-    "
-    " personally, I find a tenth of a second to work well for key code
-    " timeouts. If you experience problems and have a slow terminal or network
-    " connection, set it higher.  If you don't set ttimeoutlen, the value for
-    " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
-    "
-    "set ttimeoutlen=100
-
 endif
