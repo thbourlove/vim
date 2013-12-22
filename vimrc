@@ -104,6 +104,8 @@ let g:AutoClosePairs = "() {} \" ' [] `"
 
 " 代码补全
 Bundle 'Valloric/YouCompleteMe'
+let g:ycm_key_list_select_completion = ['<c-n>']
+let g:ycm_key_list_previous_completion = ['<c-p>']
 
 " git状态侧边栏
 Bundle 'airblade/vim-gitgutter'
@@ -178,9 +180,11 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<ESC>'
 
+" php自动补全
 Bundle 'shawncplus/phpcomplete.vim'
 let g:phpcomplete_complete_for_unknown_classes = 0
 
+" php命名空间
 Bundle 'arnaud-lb/vim-php-namespace'
 inoremap <leader>u <C-O>:call PhpInsertUse()<CR>
 inoremap <leader>e <C-O>:call PhpExpandClass()<CR>
@@ -291,30 +295,18 @@ set softtabstop=4 " let backspace delete indent
 autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 
-"""""""""""""""""""""" 插件配置 """""""""""""""""""
-" Misc
-    let g:NERDShutUp=1
-    let b:match_ignorecase = 1
+"""""""""""""""""""""" OmniComplete配置 """""""""""""""""""
+if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+        \if &omnifunc == "" |
+        \setlocal omnifunc=syntaxcomplete#Complete |
+        \endif
+endif
 
-" OmniComplete
-    if has("autocmd") && exists("+omnifunc")
-        autocmd Filetype *
-            \if &omnifunc == "" |
-            \setlocal omnifunc=syntaxcomplete#Complete |
-            \endif
-    endif
+hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-    hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-    hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-    hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-" Session List
-    set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-    nmap <leader>sl :SessionList<CR>
-    nmap <leader>ss :SessionSave<CR>
-
-" JSON
-    nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
 """"""""""""""""""" 语言高亮 缩进配置 """"""""""""""""""""
 " Indent Fixes
