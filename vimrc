@@ -103,7 +103,7 @@ let b:AutoCloseSelectionWrapPrefix = '<leader>a'
 let g:AutoClosePairs = "() {} \" ' [] `"
 
 " 代码补全
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 
 " git状态侧边栏
 Bundle 'airblade/vim-gitgutter'
@@ -179,6 +179,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<ESC>'
 
 Bundle 'shawncplus/phpcomplete.vim'
+let g:phpcomplete_complete_for_unknown_classes = 0
 
 Bundle 'arnaud-lb/vim-php-namespace'
 inoremap <leader>u <C-O>:call PhpInsertUse()<CR>
