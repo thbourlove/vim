@@ -4,7 +4,6 @@
 " Last Modified: August 13, 2013
 
 """"""""""""""" 快捷键绑定 """"""""""""""""
-
 let mapleader = ','
 
 map <silent> <leader>v :e ~/.vimrc<cr>
@@ -39,22 +38,6 @@ nnoremap k gk
 nnoremap Y y$
 
 inoremap jk <Esc>
-
-" Code folding options
-nmap <leader>f0 :set foldlevel=0<CR>
-nmap <leader>f1 :set foldlevel=1<CR>
-nmap <leader>f2 :set foldlevel=2<CR>
-nmap <leader>f3 :set foldlevel=3<CR>
-nmap <leader>f4 :set foldlevel=4<CR>
-nmap <leader>f5 :set foldlevel=5<CR>
-nmap <leader>f6 :set foldlevel=6<CR>
-nmap <leader>f7 :set foldlevel=7<CR>
-nmap <leader>f8 :set foldlevel=8<CR>
-nmap <leader>f9 :set foldlevel=9<CR>
-
-" Save and return to normal mode on FocusLost
-au FocusLost * :silent! wall                 " Save on FocusLost
-au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
 """"""""""" 插件 """"""""""""""
 
@@ -230,10 +213,7 @@ set tags=./tags;/,~/.vimtags   " set tags path
 
 set completeopt-=preview       " omnicomplete without preview
 
-autocmd! BufWritePost ~/.vimrc source ~/.vimrc
-
 let g:clipbrdDefaultReg='+'
-
 
 """""""""""""""""""""""""" 用户界面 """"""""""""""""""""""""
 if has('gui_running')
@@ -290,10 +270,6 @@ set expandtab     " tabs are spaces, not tabs
 set shiftwidth=4  " use indents of 4 spaces
 set tabstop=4     " an indentation every four columns
 set softtabstop=4 " let backspace delete indent
-" Remove trailing whitespaces and ^M chars
-"autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-
 
 """""""""""""""""""""" OmniComplete配置 """""""""""""""""""
 if has("autocmd") && exists("+omnifunc")
@@ -306,7 +282,6 @@ endif
 hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
 
 """"""""""""""""""" 语言高亮 缩进配置 """"""""""""""""""""
 " Indent Fixes
@@ -331,7 +306,12 @@ hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=da
 " Twig
     autocmd BufRead,BufNewFile *.twig set filetype=jinja
 
-""""""""""""""""""""" 函数 """""""""""""""""""""
+""""""""""""""""""""" 其他 """""""""""""""""""""
+autocmd! BufWritePost ~/.vimrc source ~/.vimrc
+autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd FocusLost * :silent! wall
+autocmd FocusLost * call feedkeys("\<C-\>\<C-n>")
+
 " Search selection
 function! VisualSearch(direction) range
     let l:saved_reg = @"
