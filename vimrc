@@ -1,8 +1,3 @@
-" File: .vimrc
-" Author: Hongbo Tang
-" Description: vim config
-" Last Modified: August 13, 2013
-
 """"""""""""""" 快捷键绑定 """"""""""""""""
 let mapleader = ','
 
