@@ -165,10 +165,10 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 " git工具
 Bundle 'tpope/vim-fugitive'
 
-" J, K
+" 代码域选择
 Bundle 'terryma/vim-expand-region'
-map J <Plug>(expand_region_expand)
-map K <Plug>(expand_region_shrink)
+map <Up> <Plug>(expand_region_expand)
+map <Down> <Plug>(expand_region_shrink)
 
 " 多光标
 Bundle 'terryma/vim-multiple-cursors'
