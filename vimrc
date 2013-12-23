@@ -183,88 +183,88 @@ Bundle 'othree/html5.vim'
 Bundle 'sprsquish/thrift.vim'
 
 """""""""""""""""""""" 环境变量 """"""""""""""""""""""""
-set nocompatible               " must be first line
-set background=dark            " Assume a dark background
+set nocompatible
+set background=dark
 
-set fencs=utf-8,gb2312,gbk     " Sets the default encoding
-set background=dark            " Assume a dark background
-filetype plugin indent on      " Automatically detect file types.
-syntax on                      " syntax highlighting
-set autochdir                  " always switch to the current file directory.
+set fencs=utf-8,gb2312,gbk
+set background=dark
+filetype plugin indent on
+syntax on
+set autochdir
 
-set nospell                    " spell checking off
-set shortmess+=filmnrxoOtT     " abbrev. of messages (avoids 'hit enter')
-set virtualedit=onemore        " allow for cursor beyond last character
-set history=1000               " Store a ton of history (default is 20)
+set nospell
+set shortmess+=filmnrxoOtT
+set virtualedit=onemore
+set history=1000
 
 set noswapfile
-set backup                     " backups are nice ...
+set backup
 set backupdir=~/.vim/backup
-set undofile                   " persistent undo
-set undolevels=1000            " maximum number of changes that can be undone
-set undoreload=10000           " maximum number lines to save for undo on a buffer reload
+set undofile
+set undolevels=1000
+set undoreload=10000
 set undodir=~/.vim/undo
-set tags=./tags;/,~/.vimtags   " set tags path
+set tags=./tags;/,~/.vimtags
 
-set completeopt-=preview       " omnicomplete without preview
+set completeopt-=preview
 
 let g:clipbrdDefaultReg='+'
 
 """""""""""""""""""""""""" 用户界面 """"""""""""""""""""""""
 if has('gui_running')
     set t_Co=256
-    set guifont=Monaco:h14     " set gui font
-    set guioptions-=T          " remove the toolbar
-    set guioptions-=L          " remove the left scrollbar
-    set guioptions-=r          " remove the right scrollbar
+    set guifont=Monaco:h14
+    set guioptions-=T
+    set guioptions-=L
+    set guioptions-=r
 else
-    set term=builtin_xterm         " Make terminal stuff works
+    set term=builtin_xterm
     set t_Co=256
 endif
 
-set tabpagemax=15             " only show 15 tabs
-set showmode                  " display the current mode
+set tabpagemax=15
+set showmode
 
-set nocursorline                " highlight current line
+set nocursorline
 if has('cmdline_info')
-    set ruler                      " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-    set showcmd                    " show partial commands in status line and selected characters/lines in visual mode
+    set ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+    set showcmd
 endif
 
 set laststatus=2
-set backspace=indent,eol,start " Backspace for dummys
-set linespace=0                " No extra spaces between rows
-set number                     " Line numbers on
-set showmatch                  " Show matching brackets/parenthesis
-set incsearch                  " Find as you type search
-set hlsearch                   " Highlight search terms
-set winminheight=0             " Windows can be 0 line high
-set ignorecase                 " Case insensitive search
-set smartcase                  " Case sensitive when uc present
-set wildmenu                   " Show list instead of just completing
-set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all.
-set whichwrap=b,s,h,l,<,>,[,]  " Backspace and cursor keys wrap to
-set scrolljump=5               " Lines to scroll when cursor leaves screen
-set scrolloff=3                " Minimum lines to keep above and below cursor
-set foldmethod=marker          " Markers are used to specify folds.
-set gdefault                   " The /g flag on :s substitutions by default
-set hidden                     " Change buffer - without saving
-set magic                      " Set magic on, for regular expressions
-set autoread                   " Auto reload file on change
+set backspace=indent,eol,start
+set linespace=0
+set number
+set showmatch
+set incsearch
+set hlsearch
+set winminheight=0
+set ignorecase
+set smartcase
+set wildmenu
+set wildmode=list:longest,full
+set whichwrap=b,s,h,l,<,>,[,]
+set scrolljump=5
+set scrolloff=3
+set foldmethod=marker
+set gdefault
+set hidden
+set magic
+set autoread
 set list
-set listchars=tab:>\ ,trail:\ ,extends:#,nbsp:\  " Highlight problematic whitespace
+set listchars=tab:>\ ,trail:\ ,extends:#,nbsp:\
 
 """""""""""""" 格式 """""""""""""""""""""
-set wrap          " wrap long lines
-set lbr           " set linebreak
-set tw=0          " sets the text width
-set ai            " Auto indent
-set si            " Smart indet
-set expandtab     " tabs are spaces, not tabs
-set shiftwidth=4  " use indents of 4 spaces
-set tabstop=4     " an indentation every four columns
-set softtabstop=4 " let backspace delete indent
+set wrap
+set lbr
+set tw=0
+set ai
+set si
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
 """""""""""""""""""""" OmniComplete配置 """""""""""""""""""
 if has("autocmd") && exists("+omnifunc")
@@ -279,26 +279,19 @@ hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=ligh
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
 """"""""""""""""""" 语言高亮 缩进配置 """"""""""""""""""""
-" Indent Fixes
     autocmd FileType css,javascript,puppet,yaml,html set shiftwidth=4
     autocmd FileType css,javascript,puppet,yaml,html set tabstop=4
     autocmd FileType css,javascript,puppet,yaml,html set softtabstop=4
 
-" Python
-    " Highlight 80 column
     autocmd FileType python set cc=80
 
-" Thrift
     autocmd BufRead,BufNewFile *.thrift set filetype=thrift
 
-" Puppet
     autocmd BufRead,BufNewFile *.pp set filetype=puppet
 
-" Nginx
     autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
     autocmd BufRead,BufNewFile /usr/local/etc/nginx/* set filetype=nginx
 
-" Twig
     autocmd BufRead,BufNewFile *.twig set filetype=jinja
 
 """"""""""""""""""""" 其他 """""""""""""""""""""
@@ -396,4 +389,3 @@ endif
 if filereadable(expand("~/.vimrc_local"))
     source ~/.vimrc_local
 endif
-
