@@ -1,0 +1,1 @@
+{"name":"Zero-Vim","tagline":"vim","body":"### How to install\r\n\r\n    wget https://raw.github.com/thbourlove/vim/master/install -O - | sh\r\n","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
