@@ -147,6 +147,12 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 " git工具
 Bundle 'tpope/vim-fugitive'
 
+" gist工具
+Bundle 'mattn/gist-vim'
+
+" webapi-vim
+Bundle 'mattn/webapi-vim'
+
 " 代码域选择
 Bundle 'terryma/vim-expand-region'
 map <Up> <Plug>(expand_region_expand)
