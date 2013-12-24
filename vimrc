@@ -1,4 +1,4 @@
-""""""""""""""" 快捷键绑定 """"""""""""""""
+" 快捷键绑定 {{{
 let mapleader = ','
 
 map <silent> <leader>v :e ~/.vimrc<cr>
@@ -33,8 +33,9 @@ nnoremap k gk
 nnoremap Y y$
 
 inoremap jk <Esc>
+}}}
 
-""""""""""" 插件 """"""""""""""
+" 插件配置 {{{
 
 " 插件管理工具
 set runtimepath+=~/.vim/bundle/vundle/
@@ -182,8 +183,9 @@ Bundle 'vim-scripts/nginx.vim'
 Bundle 'othree/html5.vim'
 
 Bundle 'sprsquish/thrift.vim'
+" }}}
 
-"""""""""""""""""""""" 环境变量 """"""""""""""""""""""""
+" 环境变量 {{{
 set nocompatible
 set background=dark
 
@@ -211,7 +213,6 @@ set completeopt-=preview
 
 let g:clipbrdDefaultReg='+'
 
-"""""""""""""""""""""""""" 用户界面 """"""""""""""""""""""""
 if has('gui_running')
     set t_Co=256
     set guifont=Monaco:h14
@@ -256,7 +257,6 @@ set autoread
 set list
 set listchars=tab:>\ ,trail:\ ,extends:#,nbsp:\
 
-"""""""""""""" 格式 """""""""""""""""""""
 set wrap
 set lbr
 set tw=0
@@ -266,8 +266,24 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
+" }}}
 
-"""""""""""""""""""""" OmniComplete配置 """""""""""""""""""
+" 其他配置 {{{
+autocmd FileType python set cc=80
+autocmd FileType php set cc=120
+
+autocmd BufRead,BufNewFile *.thrift set filetype=thrift
+autocmd BufRead,BufNewFile *.pp set filetype=puppet
+autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
+autocmd BufRead,BufNewFile /usr/local/etc/nginx/* set filetype=nginx
+autocmd BufRead,BufNewFile *.twig set filetype=jinja
+
+autocmd! BufWritePost ~/.vimrc source ~/.vimrc
+autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd FocusLost * :silent! wall
+autocmd FocusLost * call feedkeys("\<C-\>\<C-n>")
+
+" OmniComplete配置
 if has("autocmd") && exists("+omnifunc")
     autocmd Filetype *
         \if &omnifunc == "" |
@@ -279,29 +295,7 @@ hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-""""""""""""""""""" 语言高亮 缩进配置 """"""""""""""""""""
-    autocmd FileType css,javascript,puppet,yaml,html set shiftwidth=4
-    autocmd FileType css,javascript,puppet,yaml,html set tabstop=4
-    autocmd FileType css,javascript,puppet,yaml,html set softtabstop=4
-
-    autocmd FileType python set cc=80
-
-    autocmd BufRead,BufNewFile *.thrift set filetype=thrift
-
-    autocmd BufRead,BufNewFile *.pp set filetype=puppet
-
-    autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
-    autocmd BufRead,BufNewFile /usr/local/etc/nginx/* set filetype=nginx
-
-    autocmd BufRead,BufNewFile *.twig set filetype=jinja
-
-""""""""""""""""""""" 其他 """""""""""""""""""""
-autocmd! BufWritePost ~/.vimrc source ~/.vimrc
-autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-autocmd FocusLost * :silent! wall
-autocmd FocusLost * call feedkeys("\<C-\>\<C-n>")
-
-" Search selection
+" 查找/搜索
 function! VisualSearch(direction) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -321,7 +315,7 @@ function! VisualSearch(direction) range
     let @" = l:saved_reg
 endfunction
 
-" Get paste status
+" 复制模式
 function! HasPaste()
   if &paste
       return 'PASTE MODE  '
@@ -330,7 +324,7 @@ function! HasPaste()
   endif
 endfunction
 
-" Restore cursor position to where it was before
+" 光标记忆
 augroup JumpCursorOnEdit
    au!
    autocmd BufReadPost *
@@ -356,7 +350,7 @@ augroup JumpCursorOnEdit
         \ endif
 augroup END
 
-" Cscope
+" Cscope代码索引
 if has("cscope")
     set nocscopetag
     set cscopetagorder=1
@@ -385,8 +379,10 @@ if has("cscope")
     nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 endif
+" }}}
 
-"""""""""""""" 本地配置 """"""""""""""""""""
+" 本地配置 {{{
 if filereadable(expand("~/.vimrc_local"))
     source ~/.vimrc_local
 endif
+" }}}
