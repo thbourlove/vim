@@ -33,7 +33,7 @@ nnoremap k gk
 nnoremap Y y$
 
 inoremap jk <Esc>
-}}}
+" }}}
 
 " 插件配置 {{{
 
