@@ -189,6 +189,8 @@ Bundle 'vim-scripts/nginx.vim'
 Bundle 'othree/html5.vim'
 
 Bundle 'sprsquish/thrift.vim'
+
+Bundle 'cstrahan/vim-capnp'
 " }}}
 
 " 环境变量 {{{
