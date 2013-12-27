@@ -143,6 +143,7 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_html_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
@@ -191,6 +192,8 @@ Bundle 'othree/html5.vim'
 Bundle 'sprsquish/thrift.vim'
 
 Bundle 'cstrahan/vim-capnp'
+
+Bundle 'othree/javascript-libraries-syntax.vim'
 " }}}
 
 " 环境变量 {{{
