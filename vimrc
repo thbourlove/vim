@@ -1,36 +1,33 @@
 " 快捷键绑定 {{{
 let mapleader = ','
 
-map <silent> <leader>v :e ~/.vimrc<cr>
-map <silent> <leader>s :source ~/.vimrc<cr>
-map <silent> <leader>pp :setlocal paste!<cr>
-map <leader>g :vimgrep // **/*<left><left><left><left><left><left>
-map <right> :bn!<cr>
-map <left> :bp!<cr>
+noremap ; :
+noremap 0 ^
+
+nmap <silent> <leader>v :e ~/.vimrc<cr>
+nmap <silent> <leader>s :source ~/.vimrc<cr>
+nmap <silent> <leader>pp :setlocal paste!<cr>
+nmap <leader>g :vimgrep // **/*<left><left><left><left><left><left>
+nmap <right> :bn!<cr>
+nmap <left> :bp!<cr>
+nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+nnoremap <S-H> gT
+nnoremap <S-L> gt
+nnoremap j gj
+nnoremap k gk
+nnoremap Y y$
 
 vmap <silent> * :call VisualSearch('f')<CR>
 vmap <silent> # :call VisualSearch('b')<CR>
 vmap <silent> gv :call VisualSearch('gv')<CR>
 
-nmap <silent> <leader>/ :nohlsearch<CR>
-
 cmap cd. lcd %:p:h
 cmap w!! w !sudo tee % >/dev/null
-
-noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-L> <C-W>l
-noremap <C-H> <C-W>h
-noremap <S-H> gT
-noremap <S-L> gt
-noremap ; :
-
-nnoremap 0 ^
-nnoremap j gj
-nnoremap k gk
-nnoremap Y y$
 
 inoremap jk <Esc>
 " }}}
