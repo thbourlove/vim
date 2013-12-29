@@ -37,7 +37,7 @@ inoremap jk <Esc>
 " 插件管理工具
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle "gmarik/vundle"
+Bundle 'gmarik/vundle'
 
 " 光标快速移动
 Bundle 'Lokaltog/vim-easymotion'
