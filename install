@@ -3,5 +3,3 @@
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 /usr/bin/env git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 vim +BundleInstall +qall
-cd $HOME/.vim/bundle/YouCompleteMe
-./install.sh --clang-completer
