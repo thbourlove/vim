@@ -109,6 +109,9 @@ let g:ctrlp_custom_ignore = {
 nnoremap <leader>p :CtrlP<CR>
 nnoremap <leader>o :CtrlPBuffer<CR>
 
+" tag列表
+Bundle 'majutsushi/tagbar'
+
 " html自动补全
 Bundle 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<tab>'
