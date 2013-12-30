@@ -45,8 +45,6 @@ let g:EasyMotion_keys = 'asdfghjkl;'
 let g:EasyMotion_grouping = 1
 let g:EasyMotion_do_shade = 1
 let g:EasyMotion_leader_key = '<Leader><Leader>'
-let g:EasyMotion_mapping_f = 'ff'
-let g:EasyMotion_mapping_F = 'FF'
 autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
 autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
 
@@ -78,11 +76,6 @@ Bundle 'Townk/vim-autoclose'
 let b:AutoCloseSelectionWrapPrefix = '<leader>a'
 let g:AutoClosePairs = "() {} \" ' [] `"
 
-" 代码补全
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_key_list_select_completion = ['<c-n>']
-let g:ycm_key_list_previous_completion = ['<c-p>']
-
 " git状态侧边栏
 Bundle 'airblade/vim-gitgutter'
 let g:gitgutter_highlight_lines = 0
@@ -101,6 +94,7 @@ let g:solarized_termtrans=1
 
 " 自动对齐工具
 Bundle 'godlygeek/tabular'
+nnoremap <silent> <leader>t :Tabularize /
 
 " Python代码风格
 Bundle 'hynek/vim-python-pep8-indent'
@@ -109,16 +103,11 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_by_filename = 0
-nnoremap <C-o> :CtrlPBuffer<CR>
-nnoremap <C-m> :CtrlPMRU<CR>
-nnoremap <C-e> :CtrlPClearCache<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$\|build$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.DS_Store$\|\.pyc$' }
-
-" tag列表
-Bundle 'majutsushi/tagbar'
-nnoremap <silent> <leader>t :TagbarToggle<CR>
+nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>o :CtrlPBuffer<CR>
 
 " html自动补全
 Bundle 'mattn/emmet-vim'
