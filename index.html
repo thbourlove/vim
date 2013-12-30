@@ -8,15 +8,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>PHP-Vimrc by thbourlove</title>
+    <title>Vimrc by thbourlove</title>
   </head>
 
   <body>
 
     <header>
       <div class="container">
-        <h1>PHP-Vimrc</h1>
-        <h2>PHP程序员专属vim配置</h2>
+        <h1>Vimrc</h1>
+        <h2></h2>
 
         <section id="downloads">
           <a href="https://github.com/thbourlove/vim/zipball/master" class="btn">Download as .zip</a>
@@ -29,10 +29,341 @@
     <div class="container">
       <section id="main_content">
         <h3>
-<a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h3>
+<a name="%E5%AE%89%E8%A3%85" class="anchor" href="#%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>安装</h3>
 
 <pre><code>wget https://raw.github.com/thbourlove/vim/master/install -O - | sh
 </code></pre>
+
+<h3>
+<a name="ctags-%E5%AE%89%E8%A3%85" class="anchor" href="#ctags-%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>ctags 安装</h3>
+
+<pre><code>wget https://raw.github.com/thbourlove/vim/master/install_ctags -O - | sh
+</code></pre>
+
+<h3>
+<a name="ctags-%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF" class="anchor" href="#ctags-%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="octicon octicon-link"></span></a>ctags 使用姿势</h3>
+
+<pre><code>ctags -R --fields=+aimS --languages=php --php-kinds=cidf --exclude=tests .
+</code></pre>
+
+<h3>
+<a name="%E5%BF%AB%E6%8D%B7%E9%94%AE" class="anchor" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="octicon octicon-link"></span></a>快捷键</h3>
+
+<table>
+<thead><tr>
+<th>快捷键</th>
+<th>模式</th>
+<th>描述</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>;</code></td>
+<td>normal/visual</td>
+<td>进入命令模式</td>
+</tr>
+<tr>
+<td><code>,v</code></td>
+<td>normal</td>
+<td>打开<code>~/.vimrc</code>
+</td>
+</tr>
+<tr>
+<td><code>,s</code></td>
+<td>normal</td>
+<td>重新读取<code>~/.vimrc</code>配置</td>
+</tr>
+<tr>
+<td><code>,pp</code></td>
+<td>normal</td>
+<td>进入粘贴模式</td>
+</tr>
+<tr>
+<td><code>,g</code></td>
+<td>normal</td>
+<td>搜索当前目录及其子目录</td>
+</tr>
+<tr>
+<td><code>&lt;Right&gt;</code></td>
+<td>normal</td>
+<td>下一个buffer</td>
+</tr>
+<tr>
+<td><code>&lt;Left&gt;</code></td>
+<td>normal</td>
+<td>上一个buffer</td>
+</tr>
+<tr>
+<td><code>,/</code></td>
+<td>normal</td>
+<td>清除当前高亮</td>
+</tr>
+<tr>
+<td><code>,m</code></td>
+<td>normal</td>
+<td>清除win的回车</td>
+</tr>
+<tr>
+<td>
+<code>Ctrl</code> + <code>j</code>
+</td>
+<td>normal</td>
+<td>向下切换窗口</td>
+</tr>
+<tr>
+<td>
+<code>Ctrl</code> + <code>k</code>
+</td>
+<td>normal</td>
+<td>向上切换窗口</td>
+</tr>
+<tr>
+<td>
+<code>Ctrl</code> + <code>l</code>
+</td>
+<td>normal</td>
+<td>向右切换窗口</td>
+</tr>
+<tr>
+<td>
+<code>Ctrl</code> + <code>h</code>
+</td>
+<td>normal</td>
+<td>向左切换窗口</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td>normal</td>
+<td>向左切换标签页</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>normal</td>
+<td>向右切换标签页</td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td>normal</td>
+<td>复制到行尾</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>visual</td>
+<td>向下搜索当前选中的字符串</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>visual</td>
+<td>向上搜索当前选中的字符串</td>
+</tr>
+<tr>
+<td><code>gv</code></td>
+<td>visual</td>
+<td>当前目录及其子目录下搜索选中的字符串</td>
+</tr>
+<tr>
+<td><code>cd.</code></td>
+<td>command</td>
+<td>回到当前文件所在目录</td>
+</tr>
+<tr>
+<td><code>w!!</code></td>
+<td>command</td>
+<td>在不具有写入权限的情况下保存当前文件</td>
+</tr>
+<tr>
+<td><code>jk</code></td>
+<td>insert</td>
+<td>进入普通模式</td>
+</tr>
+<tr>
+<td>
+<code>Ctrl</code> + <code>&lt;Space&gt;</code>
+</td>
+<td>normal</td>
+<td>Cscope搜索前置键</td>
+</tr>
+<tr>
+<td>
+<code>Ctrl</code> + <code>&lt;Space&gt;</code> + <code>&lt;Space&gt;</code>
+</td>
+<td>normal</td>
+<td>Cscope竖向切割窗口打开</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8" class="anchor" href="#%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8"><span class="octicon octicon-link"></span></a>插件列表</h3>
+
+<table>
+<thead><tr>
+<th>插件名</th>
+<th>描述</th>
+<th>快捷键</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><a href="http://www.github.com/gmarik/vundle">gmarik/vundle</a></td>
+<td>插件管理</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/Lokaltog/vim-powerline">Lokaltog/vim-powerline</a></td>
+<td>状态栏增强</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/altercation/vim-colors-solarized">altercation/vim-colors-solarized</a></td>
+<td>solarized主题</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/kien/ctrlp.vim">kien/ctrlp.vim</a></td>
+<td>文件搜索</td>
+<td><code>,p</code></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/scrooloose/nerdtree">scrooloose/nerdtree</a></td>
+<td>目录管理</td>
+<td>
+<code>,n</code> <code>,o</code>
+</td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/Lokaltog/vim-easymotion">Lokaltog/vim-easymotion</a></td>
+<td>光标移动增强</td>
+<td>
+<code>,,f</code> <code>,,w</code>
+</td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/terryma/vim-expand-region">terryma/vim-expand-region</a></td>
+<td>Visuald代码域选择增强</td>
+<td>
+<code>&lt;Up&gt;</code> <code>&lt;Down&gt;</code>
+</td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/SirVer/ultisnips">SirVer/ultisnips</a></td>
+<td>代码段补全</td>
+<td><code>&lt;Tab&gt;</code></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/Townk/vim-autoclose">Townk/vim-autoclose</a></td>
+<td>括号补全增强</td>
+<td><code>,a</code></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/scrooloose/nerdcommenter">scrooloose/nerdcommenter</a></td>
+<td>注释工具</td>
+<td>
+<code>,cc</code> <code>,cu</code>
+</td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/godlygeek/tabular">godlygeek/tabular</a></td>
+<td>文本排版工具</td>
+<td><code>,t</code></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/terryma/vim-multiple-cursors">terryma/vim-multiple-cursors</a></td>
+<td>多光标工具</td>
+<td>
+<code>Ctrl</code> + <code>n</code>
+</td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/airblade/vim-gitgutter">airblade/vim-gitgutter</a></td>
+<td>git增删改状态侧边栏</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/tpope/vim-fugitive">tpope/vim-fugitive</a></td>
+<td>git工具</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/mattn/gist-vim">mattn/gist-vim</a></td>
+<td>gist工具</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/mattn/webapi-vim">mattn/webapi-vim</a></td>
+<td>没仔细研究，gits插件依赖于此插件</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/scrooloose/syntastic">scrooloose/syntastic</a></td>
+<td>代码检查，php代码风格检查依赖于phpcs</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/stephpy/vim-php-cs-fixer">stephpy/vim-php-cs-fixer</a></td>
+<td>php代码规范化工具</td>
+<td><code>,f</code></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/shawncplus/phpcomplete.vim">shawncplus/phpcomplete.vim</a></td>
+<td>php自动补全增强，依赖patch版ctags</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/arnaud-lb/vim-php-namespace">arnaud-lb/vim-php-namespace</a></td>
+<td>php命名空间自动补全</td>
+<td>
+<code>,u</code> <code>,e</code>
+</td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/hynek/vim-python-pep8-indent">hynek/vim-python-pep8-indent</a></td>
+<td>python pep8缩进</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/mattn/emmet-vim">mattn/emmet-vim</a></td>
+<td>html、css代码补全</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/Glench/Vim-Jinja2-Syntax">Glench/Vim-Jinja2-Syntax</a></td>
+<td>jinja2语法高亮</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/rodjek/vim-puppet">rodjek/vim-puppet</a></td>
+<td>puppet语法高亮</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/tpope/vim-markdown">tpope/vim-markdown</a></td>
+<td>markdown语法高亮</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/vim-scripts/nginx.vim">vim-scripts/nginx.vim</a></td>
+<td>nginx语法高亮</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/othree/html5.vim">othree/html5.vim</a></td>
+<td>html语法高亮，貌似也有自动补全功能。</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/sprsquish/thrift.vim">sprsquish/thrift.vim</a></td>
+<td>thrift语法高亮</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/cstrahan/vim-capnp">cstrahan/vim-capnp</a></td>
+<td>capnp语法高亮</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.github.com/othree/javascript-libraries-syntax.vim">othree/javascript-libraries-syntax.vim</a></td>
+<td>js库语法高亮</td>
+<td></td>
+</tr>
+</tbody>
+</table>
       </section>
     </div>
 
@@ -42,7 +373,7 @@
           </script>
           <script type="text/javascript">
             try {
-              var pageTracker = _gat._getTracker("vim,php");
+              var pageTracker = _gat._getTracker("vim");
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
