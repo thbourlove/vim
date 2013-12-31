@@ -30,6 +30,7 @@ cmap cd. lcd %:p:h
 cmap w!! w !sudo tee % >/dev/null
 
 inoremap jk <Esc>
+inoremap <C-@> <C-X><C-O>
 " }}}
 
 " 插件配置 {{{
