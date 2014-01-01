@@ -36,6 +36,7 @@
 `cd.`                          | command       | 回到当前文件所在目录
 `w!!`                          | command       | 在不具有写入权限的情况下保存当前文件
 `jk`                           | insert        | 进入普通模式
+`Ctrl` + `<Space>`             | insert        | omnicomplete 代码补全
 `Ctrl` + `<Space>`             | normal        | Cscope搜索前置键
 `Ctrl` + `<Space>` + `<Space>` | normal        | Cscope竖向切割窗口打开
 
