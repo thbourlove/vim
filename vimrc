@@ -168,6 +168,9 @@ inoremap <leader>e <C-O>:call PhpExpandClass()<CR>
 noremap <leader>u :call PhpInsertUse()<CR>
 noremap <leader>e :call PhpExpandClass()<CR>
 
+" nodejs自动补全
+Bundle 'myhere/vim-nodejs-complete'
+
 " 各种代码高亮/缩进工具
 Bundle 'Glench/Vim-Jinja2-Syntax'
 
@@ -184,6 +187,8 @@ Bundle 'sprsquish/thrift.vim'
 Bundle 'cstrahan/vim-capnp'
 
 Bundle 'othree/javascript-libraries-syntax.vim'
+
+Bundle 'pangloss/vim-javascript'
 " }}}
 
 " 环境变量 {{{
