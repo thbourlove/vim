@@ -172,6 +172,11 @@ noremap <leader>e :call PhpExpandClass()<CR>
 " nodejs自动补全
 Bundle 'myhere/vim-nodejs-complete'
 
+" 协作编辑
+Bundle 'FredKSchott/CoVim'
+let CoVim_default_name = "thbourlove"
+let CoVim_default_port = "12306"
+
 " 各种代码高亮/缩进工具
 Bundle 'Glench/Vim-Jinja2-Syntax'
 
