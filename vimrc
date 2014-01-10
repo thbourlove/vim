@@ -134,6 +134,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_html_checkers=[]
+let g:syntastic_c_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
@@ -168,6 +169,14 @@ inoremap <leader>e <C-O>:call PhpExpandClass()<CR>
 noremap <leader>u :call PhpInsertUse()<CR>
 noremap <leader>e :call PhpExpandClass()<CR>
 
+" nodejs自动补全
+Bundle 'myhere/vim-nodejs-complete'
+
+" 协作编辑
+Bundle 'FredKSchott/CoVim'
+let CoVim_default_name = "thbourlove"
+let CoVim_default_port = "12306"
+
 " 各种代码高亮/缩进工具
 Bundle 'Glench/Vim-Jinja2-Syntax'
 
@@ -184,6 +193,8 @@ Bundle 'sprsquish/thrift.vim'
 Bundle 'cstrahan/vim-capnp'
 
 Bundle 'othree/javascript-libraries-syntax.vim'
+
+Bundle 'pangloss/vim-javascript'
 " }}}
 
 " 环境变量 {{{
