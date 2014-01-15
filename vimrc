@@ -133,8 +133,6 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpcs']
-let g:syntastic_html_checkers=[]
-let g:syntastic_c_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
