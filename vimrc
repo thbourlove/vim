@@ -89,7 +89,11 @@ let g:gitgutter_sign_modified_removed = '~-'
 
 " solarized配色
 Bundle 'altercation/vim-colors-solarized'
-color solarized
+try
+    color solarized
+catch
+    color desert
+endtry
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 
