@@ -119,7 +119,6 @@ Bundle 'majutsushi/tagbar'
 
 " html自动补全
 Bundle 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<tab>'
 
 " 注释工具
 Bundle 'scrooloose/nerdcommenter'
