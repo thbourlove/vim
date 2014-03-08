@@ -59,7 +59,9 @@ Bundle 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories  = ["bundle/ultiSnips/UltiSnips", "thb_snippets", "local_snippets"]
+let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsSnippetsDir = "ultisnips"
+let g:UltiSnipsSnippetDirectories  = ["ultisnips", "local_snippets"]
 
 " php代码风格修正工具
 Bundle 'stephpy/vim-php-cs-fixer'
