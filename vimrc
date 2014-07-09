@@ -6,7 +6,7 @@ noremap 0 ^
 
 nmap <silent> <leader>v :e ~/.vimrc<cr>
 nmap <silent> <leader>s :source ~/.vimrc<cr>
-nmap <silent> <leader>pp :setlocal paste!<cr>
+nmap <silent> <leader>ps :setlocal paste!<cr>
 nmap <leader>g :vimgrep // **/*<left><left><left><left><left><left>
 nmap <right> :bn!<cr>
 nmap <left> :bp!<cr>
@@ -181,6 +181,9 @@ Bundle 'FredKSchott/CoVim'
 let CoVim_default_name = "thbourlove"
 let CoVim_default_port = "12306"
 
+" 编译工具
+Bundle 'xuhdev/SingleCompile'
+
 " 各种代码高亮/缩进工具
 Bundle 'Glench/Vim-Jinja2-Syntax'
 
@@ -291,6 +294,7 @@ autocmd FileType php set cc=120
 autocmd BufRead,BufNewFile *.thrift set filetype=thrift
 autocmd BufRead,BufNewFile *.pp set filetype=puppet
 autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
+autocmd BufRead,BufNewFile */nginx.conf set filetype=nginx
 autocmd BufRead,BufNewFile /usr/local/etc/nginx/* set filetype=nginx
 autocmd BufRead,BufNewFile *.twig set filetype=jinja
 
