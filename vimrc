@@ -6,7 +6,7 @@ noremap 0 ^
 
 nmap <silent> <leader>v :e ~/.vimrc<cr>
 nmap <silent> <leader>s :source ~/.vimrc<cr>
-nmap <silent> <leader>ps :setlocal paste!<cr>
+nmap <silent> <leader>p :setlocal paste!<cr>
 nmap <leader>g :vimgrep // **/*<left><left><left><left><left><left>
 nmap <right> :bn!<cr>
 nmap <left> :bp!<cr>
@@ -113,7 +113,6 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$\|build$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.DS_Store$\|\.pyc$' }
-nnoremap <leader>p :CtrlP<CR>
 nnoremap <leader>o :CtrlPBuffer<CR>
 
 " tag列表
