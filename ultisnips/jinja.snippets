@@ -10,7 +10,7 @@ extends html
 
 snippet block "block" b
 {% block ${1:name} %}
-    $2
+	$2
 {% endblock $1 %}
 endsnippet
 
@@ -49,46 +49,46 @@ endsnippet
 
 snippet filter "filter" b
 {% filter ${1:filter} %}
-    $2
+	$2
 {% endfilter %}
 endsnippet
 
 snippet for "for" b
 {% for ${1:item} in ${2:sequence} %}
-    $3
+	$3
 {% endfor %}
 endsnippet
 
 snippet for "for/else" b
 {% for ${1:item} in ${2:sequence} %}
-    $3
+	$3
 {% else %}
-    $4
+	$4
 {% endfor %}
 endsnippet
 
 snippet if "if" b
 {% if ${1:expr} %}
-    $2
+	$2
 {% endif %}
 endsnippet
 
 snippet if "if/else" b
 {% if ${1:expr} %}
-    $2
+	$2
 {% else %}
-    $3
+	$3
 {% endif %}
 endsnippet
 
 snippet if "if/elif/else" b
 {% elif ${1:expr} %}
-    $2
+	$2
 endsnippet
 
 snippet macro "macro" b
 {% macro ${1:name}(${2:args}) %}
-    $3
+	$3
 {% endmacro %}
 endsnippet
 
@@ -98,7 +98,7 @@ endsnippet
 
 snippet autoescape "autoescape" b
 {% autoescape ${1:true} %}
-    $2
+	$2
 {% endautoescape %}
 endsnippet
 
