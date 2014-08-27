@@ -180,6 +180,9 @@ Bundle 'FredKSchott/CoVim'
 let CoVim_default_name = "thbourlove"
 let CoVim_default_port = "12306"
 
+" go语言工具
+Bundle 'fatih/vim-go'
+
 " 编译工具
 Bundle 'xuhdev/SingleCompile'
 
@@ -296,6 +299,7 @@ autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
 autocmd BufRead,BufNewFile */nginx.conf set filetype=nginx
 autocmd BufRead,BufNewFile /usr/local/etc/nginx/* set filetype=nginx
 autocmd BufRead,BufNewFile *.twig set filetype=jinja
+autocmd BufRead,BufNewFile *.go set filetype=go
 
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
