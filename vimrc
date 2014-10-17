@@ -50,9 +50,9 @@ autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
 autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
 
 " 增强状态栏
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'compatible'
-let g:Powerline_colorscheme = 'solarized16'
+Bundle 'bling/vim-airline'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " 代码片段管理
 Bundle 'SirVer/ultisnips'
