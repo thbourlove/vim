@@ -199,6 +199,10 @@ Bundle 'cstrahan/vim-capnp'
 Bundle 'othree/javascript-libraries-syntax.vim'
 
 Bundle 'pangloss/vim-javascript'
+
+Bundle 'saltstack/salt-vim'
+
+Bundle 'dag/vim-fish'
 " }}}
 
 " 环境变量 {{{
