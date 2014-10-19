@@ -50,9 +50,9 @@ autocmd VimEnter,Colorscheme * :hi EasyMotionTarget ctermbg=none ctermfg=green
 autocmd VimEnter,Colorscheme * :hi EasyMotionShade  ctermbg=none ctermfg=black
 
 " 增强状态栏
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'compatible'
-let g:Powerline_colorscheme = 'solarized16'
+Bundle 'bling/vim-airline'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " 代码片段管理
 Bundle 'SirVer/ultisnips'
@@ -176,11 +176,6 @@ noremap <leader>e :call PhpExpandClass()<CR>
 " nodejs自动补全
 Bundle 'myhere/vim-nodejs-complete'
 
-" 协作编辑
-Bundle 'FredKSchott/CoVim'
-let CoVim_default_name = "thbourlove"
-let CoVim_default_port = "12306"
-
 " go语言工具
 Bundle 'fatih/vim-go'
 
@@ -210,6 +205,7 @@ Bundle 'chase/vim-ansible-yaml'
 " }}}
 
 " 环境变量 {{{
+set shell=bash
 set nocompatible
 set background=dark
 
