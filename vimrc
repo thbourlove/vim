@@ -138,6 +138,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_python_checkers=['flake8']
+let g:syntastic_c_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
@@ -203,6 +204,8 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'saltstack/salt-vim'
 
 Bundle 'dag/vim-fish'
+
+Bundle 'chase/vim-ansible-yaml'
 " }}}
 
 " 环境变量 {{{
