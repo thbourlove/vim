@@ -185,6 +185,8 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_fail_silently = 1
 au Filetype go nmap gv <Plug>(go-def-vertical)
 au Filetype go nmap gs <Plug>(go-def-split)
 au Filetype go nmap gt <Plug>(go-def-tab)
@@ -223,6 +225,8 @@ Bundle 'dag/vim-fish'
 Bundle 'chase/vim-ansible-yaml'
 
 Bundle 'ryanss/vim-hackernews'
+
+Bundle 'nsf/gocode'
 " }}}
 
 " 环境变量 {{{
