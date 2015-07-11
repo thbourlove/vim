@@ -80,7 +80,7 @@ let b:AutoCloseSelectionWrapPrefix = '<leader>a'
 let g:AutoClosePairs = "() {} \" ' [] `"
 
 " git状态侧边栏
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_escape_grep = 1
 let g:gitgutter_eager = 1
@@ -139,6 +139,8 @@ let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_c_checkers=[]
+let g:syntastic_cpp_checkers=[]
+"let g:syntastic_go_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
@@ -178,9 +180,22 @@ Bundle 'myhere/vim-nodejs-complete'
 
 " go语言工具
 Bundle 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+au Filetype go nmap gv <Plug>(go-def-vertical)
+au Filetype go nmap gs <Plug>(go-def-split)
+au Filetype go nmap gt <Plug>(go-def-tab)
+au Filetype go nmap <C-T> :bp!<cr>
+au Filetype go nmap <C-]> <Plug>(go-def)
 
 " 编译工具
 Bundle 'xuhdev/SingleCompile'
+
+" 代码补全
+Bundle 'Valloric/YouCompleteMe'
 
 " 各种代码高亮/缩进工具
 Bundle 'Glench/Vim-Jinja2-Syntax'
@@ -206,6 +221,8 @@ Bundle 'saltstack/salt-vim'
 Bundle 'dag/vim-fish'
 
 Bundle 'chase/vim-ansible-yaml'
+
+Bundle 'ryanss/vim-hackernews'
 " }}}
 
 " 环境变量 {{{
@@ -234,6 +251,7 @@ set undodir=~/.vim/undo
 set tags=./tags;/,~/.vimtags
 
 set completeopt-=preview
+set complete-=i
 
 let g:clipbrdDefaultReg='+'
 
@@ -295,6 +313,7 @@ set softtabstop=4
 " 其他配置 {{{
 autocmd FileType python set cc=80
 autocmd FileType php set cc=120
+autocmd FileType cpp set shiftwidth=2 tabstop=2 softtabstop=2
 
 autocmd BufRead,BufNewFile *.thrift set filetype=thrift
 autocmd BufRead,BufNewFile *.pp set filetype=puppet
