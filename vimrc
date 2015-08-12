@@ -140,7 +140,7 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_c_checkers=[]
 let g:syntastic_cpp_checkers=[]
-"let g:syntastic_go_checkers=[]
+let g:syntastic_go_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
@@ -190,7 +190,6 @@ let g:go_fmt_fail_silently = 1
 au Filetype go nmap gv <Plug>(go-def-vertical)
 au Filetype go nmap gs <Plug>(go-def-split)
 au Filetype go nmap gt <Plug>(go-def-tab)
-au Filetype go nmap <C-T> :bp!<cr>
 au Filetype go nmap <C-]> <Plug>(go-def)
 
 " 编译工具
