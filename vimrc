@@ -192,6 +192,13 @@ au Filetype go nmap gs <Plug>(go-def-split)
 au Filetype go nmap gt <Plug>(go-def-tab)
 au Filetype go nmap <C-]> <Plug>(go-def)
 
+" rust
+Bundle 'racer-rust/vim-racer'
+let g:racer_cmd = "/usr/local/bin/racer"
+let $RUST_SRC_PATH = "/home/vagrant/Develop/rust/src"
+
+Bundle 'rust-lang/rust.vim'
+
 " 编译工具
 Bundle 'xuhdev/SingleCompile'
 
@@ -318,6 +325,7 @@ autocmd FileType python set cc=80
 autocmd FileType php set cc=120
 autocmd FileType cpp set shiftwidth=2 tabstop=2 softtabstop=2
 
+autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd BufRead,BufNewFile *.thrift set filetype=thrift
 autocmd BufRead,BufNewFile *.pp set filetype=puppet
 autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
