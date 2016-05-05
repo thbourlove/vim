@@ -101,7 +101,6 @@ let g:solarized_termtrans=1
 
 " 自动对齐工具
 Bundle 'godlygeek/tabular'
-nnoremap <silent> <leader>t :Tabularize /
 
 " Python代码风格
 Bundle 'hynek/vim-python-pep8-indent'
@@ -117,6 +116,7 @@ nnoremap <leader>o :CtrlPBuffer<CR>
 
 " tag列表
 Bundle 'majutsushi/tagbar'
+nnoremap <silent> <leader>t :Tagbar<CR>
 
 " html自动补全
 Bundle 'mattn/emmet-vim'
@@ -186,7 +186,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_fmt_fail_silently = 1
+"let g:go_gocode_bin = "/home/vagrant/Develop/go/bin/gocode"
+"let g:go_fmt_fail_silently = 1
 au Filetype go nmap gv <Plug>(go-def-vertical)
 au Filetype go nmap gs <Plug>(go-def-split)
 au Filetype go nmap gt <Plug>(go-def-tab)
@@ -232,7 +233,13 @@ Bundle 'chase/vim-ansible-yaml'
 
 Bundle 'ryanss/vim-hackernews'
 
-Bundle 'nsf/gocode'
+Bundle 'cespare/vim-toml'
+
+"Plugin 'nsf/gocode', {'rtp': 'vim/'}
+
+Plugin 'mhinz/vim-rfc'
+
+Plugin 'vim-scripts/rfc-syntax', { 'for': 'rfc' }
 " }}}
 
 " 环境变量 {{{
@@ -321,9 +328,10 @@ set softtabstop=4
 " }}}
 
 " 其他配置 {{{
-autocmd FileType python set cc=80
+autocmd FileType python set cc=80 tags=./tags;/,/usr/local/lib/python2.7/dist-packages/tags
 autocmd FileType php set cc=120
 autocmd FileType cpp set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
 
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd BufRead,BufNewFile *.thrift set filetype=thrift
@@ -331,8 +339,12 @@ autocmd BufRead,BufNewFile *.pp set filetype=puppet
 autocmd BufRead,BufNewFile /etc/nginx/* set filetype=nginx
 autocmd BufRead,BufNewFile */nginx.conf set filetype=nginx
 autocmd BufRead,BufNewFile /usr/local/etc/nginx/* set filetype=nginx
+autocmd BufRead,BufNewFile /usr/local/nginx/conf/* set filetype=nginx
 autocmd BufRead,BufNewFile *.twig set filetype=jinja
+autocmd BufRead,BufNewFile *.tmpl set filetype=sh
 autocmd BufRead,BufNewFile *.go set filetype=go
+autocmd BufRead,BufNewFile *.go set omnifunc=gocomplete#Complete
+autocmd BufRead,BufNewFile rfc*.txt set filetype=rfc
 
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
