@@ -1,6 +1,6 @@
 ### 安装
 
-    wget https://raw.github.com/thbourlove/vim/master/install -O - | sh
+    wget https://raw.github.com/thbourlove/vim/master/install.sh -O - | sh
 
 ### ctags 安装
 
