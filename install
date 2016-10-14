@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-/usr/bin/env git clone git://github.com/thbourlove/vim.git $HOME/.vim
+/usr/bin/env git clone https://github.com/thbourlove/vim.git $HOME/.vim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
-/usr/bin/env git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+/usr/bin/env git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 vim +BundleInstall +qall
 cd $HOME/.vim/ftdetect
 ln -s ../bundle/ultisnips/ftdetect/* ./
