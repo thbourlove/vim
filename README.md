@@ -72,6 +72,6 @@
 [tpope/vim-markdown](http://www.github.com/tpope/vim-markdown)                                         | markdown语法高亮                     |
 [vim-scripts/nginx.vim](http://www.github.com/vim-scripts/nginx.vim)                                   | nginx语法高亮                        |
 [othree/html5.vim](http://www.github.com/othree/html5.vim)                                             | html语法高亮，貌似也有自动补全功能。 |
-[sprsquish/thrift.vim](http://www.github.com/sprsquish/thrift.vim)                                     | thrift语法高亮                       |
+[solarnz/thrift.vim](http://www.github.com/solarnz/thrift.vim)                                     | thrift语法高亮                       |
 [cstrahan/vim-capnp](http://www.github.com/cstrahan/vim-capnp)                                         | capnp语法高亮                        |
 [othree/javascript-libraries-syntax.vim](http://www.github.com/othree/javascript-libraries-syntax.vim) | js库语法高亮                         |
