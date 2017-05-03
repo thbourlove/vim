@@ -141,6 +141,7 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_c_checkers=[]
 let g:syntastic_cpp_checkers=[]
 let g:syntastic_go_checkers=[]
+let g:syntastic_html_checkers=[]
 
 " git工具
 Bundle 'tpope/vim-fugitive'
@@ -186,7 +187,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-"let g:go_gocode_bin = "/home/vagrant/Develop/go/bin/gocode"
+"let g:go_gocode_bin = "~/Develop/go/bin/gocode"
 "let g:go_fmt_fail_silently = 1
 au Filetype go nmap gv <Plug>(go-def-vertical)
 au Filetype go nmap gs <Plug>(go-def-split)
@@ -196,7 +197,7 @@ au Filetype go nmap <C-]> <Plug>(go-def)
 " rust
 Bundle 'racer-rust/vim-racer'
 let g:racer_cmd = "/usr/local/bin/racer"
-let $RUST_SRC_PATH = "/home/vagrant/Develop/rust/src"
+let $RUST_SRC_PATH = "~/Develop/rust/src"
 
 Bundle 'rust-lang/rust.vim'
 
@@ -234,6 +235,8 @@ Bundle 'chase/vim-ansible-yaml'
 Bundle 'ryanss/vim-hackernews'
 
 Bundle 'cespare/vim-toml'
+
+Bundle 'yuezk/weex.vim'
 
 "Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
@@ -343,7 +346,7 @@ autocmd BufRead,BufNewFile /usr/local/nginx/conf/* set filetype=nginx
 autocmd BufRead,BufNewFile *.twig set filetype=jinja
 autocmd BufRead,BufNewFile *.tmpl set filetype=sh
 autocmd BufRead,BufNewFile *.go set filetype=go
-autocmd BufRead,BufNewFile *.go set omnifunc=gocomplete#Complete
+"autocmd BufRead,BufNewFile *.go set omnifunc=gocomplete#Complete
 autocmd BufRead,BufNewFile rfc*.txt set filetype=rfc
 
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
